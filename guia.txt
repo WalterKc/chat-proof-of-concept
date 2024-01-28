@@ -1,0 +1,23 @@
+bueno, esto es sencillo a simple vista, pero, vamos ornenarnos
+primerom vamos a hacer el html, sin funciones
+como?, aca vamos a pensarlo
+primero, hay que crear el html para los nombres, un formulario normal
+luego tenemos que crear el html para el chat, no es necesario unirlos por ahora
+hay varias maneras de capturar el nombre.....
+vamos a poner todas y cada una y luego elijamos cual es mejor
+>also
+apara comparar el nombre de los usuarios, tenemos que tener algun tipo de array con los nombres,
+sino no es posible comparar
+listo, ya tengo comunicacion y arrays, con estados, ahora vamos a hacer la comparacion de nombres
+primero, vamos a llenar con los nombres el array, asi nomas a lo guaso
+ahora vamos a comparar, si 2 nombres son iguales, tira un mensaje
+listo, tira un mensaje, ahora vamos a hacer que rompa la continuidad de la aplicacion y ya esta el comprobador
+acordate de remover el nombre invalido
+listo lo de romper la continuidad.
+ahora, vamos a agregar el cambio de pagina, listo.
+pero ahora tengo un problema, cuando cambiamos la pagina, no se pasa el nombre de usuarios
+si se guarda el array, pero tenemos que ver, una manera eficiente en la que se pueda guardar el nombre 
+de usuario en el cliente y que no moleste y sea facil del cambiar tambien
+tambien tenemos que poner que cuando un usuario toque "cambiar nombre", o se cambie de nombre/deslogee
+se borre su nombre del array
+idea, usemo una cookie, mas facil imposible, se crea la cookie y se la lee luego, y se borra, nada de estados rancios con eso
