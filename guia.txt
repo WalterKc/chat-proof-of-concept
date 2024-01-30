@@ -21,3 +21,20 @@ de usuario en el cliente y que no moleste y sea facil del cambiar tambien
 tambien tenemos que poner que cuando un usuario toque "cambiar nombre", o se cambie de nombre/deslogee
 se borre su nombre del array
 idea, usemo una cookie, mas facil imposible, se crea la cookie y se la lee luego, y se borra, nada de estados rancios con eso
+ok, no se como pasar estado o crearlos en next js sin que me salten todos los errores posibles, asi que voy a ir a lo facil
+voy a traer de mi viejo repo el controlador de cookies y ya, ya lo tengo echo y sirve para aca
+asi que va a funcionar de la siguente manera.
+Nuevo!
+ya se puede cambiar y enviar los datos a traves del cliente, ya que aprendimos algunas funciones nuevas
+y entendi mejor como funcione next
+bueno, lo primero que vamos a hacer es lo siguiente
+A. verificamos que el usuario no tenga una cookie, esta cookie se usa para saber su nombre anteriores
+A2. si tiene una cookie, se avisa su nombre anterior, sino se pasa al B 
+B. cuando creamos un nombre nuevo, verificamos si hay un usuario con ese nombre, si lo hay, no pasa 
+y si esta disponible continuia 
+B2. hay que verificar cuando un usuario se desconecta de manera activa, eso lo va a hacer sockey io,
+asi borramos los nombres sin usemo
+C. cuando entras al chat, hay que pasar tanto el nombre como estado y la cookie, solo se permite una cookie
+C. en caso de que la cookie y el nombre del estado no sean iguales,se borra la cookie y se vuele a crear otra,
+sigiendo los pasos de B 
+eso es todo , luego sigue el chat en si
