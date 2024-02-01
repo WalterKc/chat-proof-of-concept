@@ -9,7 +9,7 @@ export const click = async () => {
     alert("NO TENEMOS UNA COOKIE!");
   }
 };
-export const controlDeCookies = () => {
+export const controlDeCookies = async () => {
   const numeroDeCookies = document.cookie.split(";");
   //aca vamos a acerla facil, vamos a poner un if else
   /**
@@ -31,7 +31,7 @@ export const controlDeCookies = () => {
   } else if (document.cookie.length > 0) {
     const nombre = document.cookie.split("=")[1];
     alert("hay solo una cookie!,ese es tu nombre! " + nombre);
-    console.log("DATOS DE LA COOKIE", "nombre");
+    console.log("DATOS DE LA COOKIE", nombre);
     return true;
   } else {
     alert("No hay cookies!, podes crear tu nombre!");

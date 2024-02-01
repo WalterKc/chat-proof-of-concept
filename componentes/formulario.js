@@ -17,7 +17,7 @@ function crearCookie(nombre) {
   Cookies.set("nombre", nombre, { expires: 7 });
 }
 
-async function procesarFormulario(e, capturador, setNombre) {
+async function procesarFormulario(e, capturador, setNombre, nombreUsuario) {
   e.preventDefault();
   const datos = new FormData(e.target);
   const name = datos.get("name");
@@ -25,12 +25,14 @@ async function procesarFormulario(e, capturador, setNombre) {
   const estado = await capturador(name);
   if (estado) {
     console.log("NOMBRE VALIDO!, PODES ENTRAR!", "ESTADO", estado);
+    console.log("NOMBRE LLEGADO DESDE EL SERVER!", name);
     //redirect("/chat");
+    await setNombre(name);
+    console.log("NOMBRE DEL FRONT!", nombreUsuario);
     crearCookie(name);
-    setNombre(name);
     //click();
-    controlDeCookies();
-
+    await controlDeCookies();
+    //redireccion();
     return true;
 
     //Usuario(name);
@@ -40,7 +42,7 @@ async function procesarFormulario(e, capturador, setNombre) {
     //click();
     //alert("UNA ALERTA");
 
-    controlDeCookies();
+    await controlDeCookies();
     return false;
   }
 
@@ -51,19 +53,36 @@ async function procesarFormulario(e, capturador, setNombre) {
 export default function CapturadorDeFormulario(estado) {
   const capturador = estado.capturador;
   const borrador = estado.borradorDatos;
+  const router = useRouter();
   //const setNombre = estado.setNombre;
   const [nombreUsuario, setNombreUsuario] = useState(false);
-  const setNombre = (datos) => {
+  const [botonTest, setBotonTest] = useState(false);
+  const setNombre = async (datos) => {
     setNombreUsuario(datos);
   };
+  const setTestB = () => {
+    console.log("TEST DE REDIRECCION!", botonTest);
+    setBotonTest(true);
+  };
   const redireccion = (datos) => {
-    const router = useRouter();
     router.push(`/chat/?Datos=${datos}`);
   };
 
   useEffect(() => {
     console.log("EL NOMBRE DE USUARIO CAMBIO!!!!!", nombreUsuario);
   }, [nombreUsuario]);
+  useEffect(() => {
+    const nombre = document.cookie.split("=")[1];
+    //aca vamos a verificar si existe una cookie y si existe, se setea el nombre
+    if (controlDeCookies()) {
+      setNombre(nombre);
+    }
+  }, []);
+  useEffect(() => {
+    if (botonTest) {
+      redireccion();
+    }
+  }, [botonTest]);
 
   //const router = useRouter();
 
@@ -74,8 +93,21 @@ export default function CapturadorDeFormulario(estado) {
       <form
         id="mi-formulario"
         onSubmit={
-          (e) => {
-            procesarFormulario(e, capturador, setNombre);
+          async (e) => {
+            const datos = new FormData(e.target);
+            const name = datos.get("name");
+            const verificacionUusuario = await procesarFormulario(
+              e,
+              capturador,
+              setNombre,
+              nombreUsuario
+            );
+            console.log("ESTADO DEL FORMULARIO!", verificacionUusuario);
+            if (verificacionUusuario) {
+              console.log("NOMBRE A ENVIAR!", name);
+
+              redireccion(name);
+            }
           } /* capturador() este no va*/
         }
       >
@@ -88,6 +120,8 @@ export default function CapturadorDeFormulario(estado) {
       >
         BORRAR USUARIO DEL SERVIDOR
       </button>
+      <br></br>
+      <button onClick={() => setTestB()}>redireccion TEST </button>
     </div>
   );
 }
