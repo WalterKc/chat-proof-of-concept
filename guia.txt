@@ -38,3 +38,9 @@ C. cuando entras al chat, hay que pasar tanto el nombre como estado y la cookie,
 C. en caso de que la cookie y el nombre del estado no sean iguales,se borra la cookie y se vuele a crear otra,
 sigiendo los pasos de B 
 eso es todo , luego sigue el chat en si
+
+OK, ya esta todo listo, menos los sockets que no puedo hacer que anden, pero bueno, eso ya lo voy a ver
+me caga mucho el next que me hace conflicto ccon el socket, pero bueno, eso lo tengo que arreglar.
+primero, vamos a terminar para entregar lo que tenemos.
+vamos agregar el borrado de usuarios de parte del servidor, luego
+vamos a borrar todas las funciones y cosas de test, con los comentarios y listo

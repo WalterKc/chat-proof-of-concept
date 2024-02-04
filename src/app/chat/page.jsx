@@ -26,8 +26,8 @@ export default function Chat(props) {
 
   return (
     <div>
-      <h1>nombre usuario</h1>
-      <Usuario></Usuario>
+      <h1>nombre usuario: {nombreDelServer}</h1>
+      {/*<Usuario></Usuario>*/}
       <h2>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ex
         voluptatem eligendi architecto quia modi voluptatum ad, obcaecati
