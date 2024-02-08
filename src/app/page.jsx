@@ -1,6 +1,3 @@
-//import { useState, useEffect } from "react";
-import { redirect } from "next/navigation";
-
 import CapturadorDeFormulario from "../../componentes/formulario";
 import Cookie from "../../componentes/cookies";
 //ok, esto es horrible la verdad, un bardo tremendo para PASAR UNA PUTA FUNCION DEL SERVIDOR AL CLIENTE
@@ -15,16 +12,10 @@ async function capturarDatos(datos) {
   // const name = datos;
 
   console.log("CAPTURADOR SERVER", datos);
-  //recorramos el array y comparemos
-  //var indices = [];
   var coincidencias = [];
-  //var array = ["a", "b", "a", "c", "a", "d"];
-  var arrayTEST = ["a", "b", "a", "c", "a", "d"];
+
   var arrayTESTV2 = arrayDeNombres;
-  //var element = "a";
-  var elemento = "a";
   var elementoV2 = datos;
-  //var idx = arrayTEST.indexOf(elemento);
   var indiceActual = arrayTESTV2.indexOf(elementoV2);
 
   while (indiceActual != -1) {
@@ -35,17 +26,14 @@ async function capturarDatos(datos) {
   if (coincidencias.length >= 1) {
     console.log("ALERTA ,  NOMBRE REPETIDO!");
 
-    //arrayDeNombres.pop(datos);
     console.log("ARRAY", arrayDeNombres);
     return false;
   } else {
     arrayDeNombres.push(datos);
     console.log("PODES PASAR!");
     console.log("ARRAY", arrayDeNombres);
-    //Usuario()
 
     return true;
-    //redirect("/chat");
   }
 }
 async function borrarDatos(nombre) {
@@ -73,12 +61,6 @@ export default function HomePage() {
     "use server";
     console.log("TEST DE CLICK");
   };
-  /*
-  [datos, setDatos] = useState(false);
-  useEffect(() => {
-    console.log("ESTADO GUARDAD", datos);
-  }, []);
-  */
 
   return (
     <div>
@@ -89,16 +71,9 @@ export default function HomePage() {
         capturador={capturarDatos}
         borradorDatos={borrarDatos}
       ></CapturadorDeFormulario>
-      {/*capturarDatos(CapturadorDeFormulario())*/}
       <Cookie detectorDeCookies={click}></Cookie>
     </div>
   );
 }
-/**
- * <form id="mi-formulario" onSubmit={(e) => procesarFormulario(e)}>
-        <label>Nombre de usuario:</label>
-        <input type="text" id="fname" name="fname"></input>
-        <input type="submit" value="Continuar" id="BotonSubmit"></input>
-      </form>
- */
+
 //despues de poner el nombre, se salta a la sigiente pagina

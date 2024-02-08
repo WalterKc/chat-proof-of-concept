@@ -44,3 +44,7 @@ me caga mucho el next que me hace conflicto ccon el socket, pero bueno, eso lo t
 primero, vamos a terminar para entregar lo que tenemos.
 vamos agregar el borrado de usuarios de parte del servidor, luego
 vamos a borrar todas las funciones y cosas de test, con los comentarios y listo
+OK!
+ya tenemos todo listo para hacer el pull request inicial, pero, aun falta limpiar un toque, voy
+a hacer eso , voy a limpiar las funciones de test, luego los comentarios, y luego vamos a hacer un pull request
+inicial, sin el chat
