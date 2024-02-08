@@ -48,3 +48,4 @@ OK!
 ya tenemos todo listo para hacer el pull request inicial, pero, aun falta limpiar un toque, voy
 a hacer eso , voy a limpiar las funciones de test, luego los comentarios, y luego vamos a hacer un pull request
 inicial, sin el chat
+nota, hay que poner un alert para que diga que el nombre esta repetido en el servidor

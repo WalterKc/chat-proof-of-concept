@@ -4,8 +4,6 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { borrarCookie, controlDeCookies } from "./cookies";
 
-//recorda que este post se usa en la pagina post, y se pasa los datos de hay
-
 function crearCookie(nombre) {
   Cookies.set("nombre", nombre, { expires: 7 });
 }
@@ -25,6 +23,7 @@ async function procesarFormulario(e, capturador, setNombre, nombreUsuario) {
     return true;
   } else {
     console.log("NOMBRE REPETIDO!, NO PODES ENTRAR!", "ESTADO", estado);
+    alert("NOMBRE REPETIDO!, NO PODES ENTRAR!");
 
     await controlDeCookies();
     return false;
@@ -53,7 +52,6 @@ export default function CapturadorDeFormulario(estado) {
   }, [nombreUsuario]);
   useEffect(() => {
     const nombre = document.cookie.split("=")[1];
-    //aca vamos a verificar si existe una cookie y si existe, se setea el nombre
     if (controlDeCookies()) {
       setNombre(nombre);
     }
