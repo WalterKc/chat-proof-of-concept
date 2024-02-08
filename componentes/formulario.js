@@ -1,19 +1,12 @@
 "use client";
-//import { redirect } from "next/navigation";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import { borrarCookie, click, controlDeCookies } from "./cookies";
+import { borrarCookie, controlDeCookies } from "./cookies";
 
 //recorda que este post se usa en la pagina post, y se pasa los datos de hay
-let logeado = false;
-function redireccionExterna(datos) {
-  const router = useRouter();
-  router.push(`/chat/?Datos=${datos}`);
-}
-function crearCookie(nombre) {
-  //const datos = JSON.stringify(datosSinCodificar);
 
+function crearCookie(nombre) {
   Cookies.set("nombre", nombre, { expires: 7 });
 }
 
@@ -21,40 +14,27 @@ async function procesarFormulario(e, capturador, setNombre, nombreUsuario) {
   e.preventDefault();
   const datos = new FormData(e.target);
   const name = datos.get("name");
-  //console.log("CAPTURADOR", capturador("a"));
   const estado = await capturador(name);
   if (estado) {
     console.log("NOMBRE VALIDO!, PODES ENTRAR!", "ESTADO", estado);
     console.log("NOMBRE LLEGADO DESDE EL SERVER!", name);
-    //redirect("/chat");
     await setNombre(name);
     console.log("NOMBRE DEL FRONT!", nombreUsuario);
     crearCookie(name);
-    //click();
     await controlDeCookies();
-    //redireccion();
     return true;
-
-    //Usuario(name);
   } else {
     console.log("NOMBRE REPETIDO!, NO PODES ENTRAR!", "ESTADO", estado);
-    //logeado = false;
-    //click();
-    //alert("UNA ALERTA");
 
     await controlDeCookies();
     return false;
   }
-
-  console.log("CAPTURADOR CLIENTE", e.target, name);
-  //return name;
 }
 
 export default function CapturadorDeFormulario(estado) {
   const capturador = estado.capturador;
   const borrador = estado.borradorDatos;
   const router = useRouter();
-  //const setNombre = estado.setNombre;
   const [nombreUsuario, setNombreUsuario] = useState(false);
   const [botonTest, setBotonTest] = useState(false);
   const setNombre = async (datos) => {
@@ -83,8 +63,6 @@ export default function CapturadorDeFormulario(estado) {
       redireccion();
     }
   }, [botonTest]);
-
-  //const router = useRouter();
 
   return (
     <div>
