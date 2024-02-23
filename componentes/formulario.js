@@ -14,15 +14,11 @@ async function procesarFormulario(e, capturador, setNombre, nombreUsuario) {
   const name = datos.get("name");
   const estado = await capturador(name);
   if (estado) {
-    console.log("NOMBRE VALIDO!, PODES ENTRAR!", "ESTADO", estado);
-    console.log("NOMBRE LLEGADO DESDE EL SERVER!", name);
     await setNombre(name);
-    console.log("NOMBRE DEL FRONT!", nombreUsuario);
     crearCookie(name);
     await controlDeCookies();
     return true;
   } else {
-    console.log("NOMBRE REPETIDO!, NO PODES ENTRAR!", "ESTADO", estado);
     alert("NOMBRE REPETIDO!, NO PODES ENTRAR!");
 
     await controlDeCookies();
@@ -40,16 +36,13 @@ export default function CapturadorDeFormulario(estado) {
     setNombreUsuario(datos);
   };
   const setTestB = () => {
-    console.log("TEST DE REDIRECCION!", botonTest);
     setBotonTest(true);
   };
   const redireccion = (datos) => {
     router.push(`/chat/?Datos=${datos}`);
   };
 
-  useEffect(() => {
-    console.log("EL NOMBRE DE USUARIO CAMBIO!!!!!", nombreUsuario);
-  }, [nombreUsuario]);
+  useEffect(() => {}, [nombreUsuario]);
   useEffect(() => {
     const nombre = document.cookie.split("=")[1];
     if (controlDeCookies()) {
@@ -78,10 +71,7 @@ export default function CapturadorDeFormulario(estado) {
               setNombre,
               nombreUsuario
             );
-            console.log("ESTADO DEL FORMULARIO!", verificacionUusuario);
             if (verificacionUusuario) {
-              console.log("NOMBRE A ENVIAR!", name);
-
               redireccion(name);
             }
           } /* capturador() este no va*/
@@ -97,7 +87,6 @@ export default function CapturadorDeFormulario(estado) {
         BORRAR USUARIO DEL SERVIDOR
       </button>
       <br></br>
-      <button onClick={() => setTestB()}>redireccion TEST </button>
     </div>
   );
 }

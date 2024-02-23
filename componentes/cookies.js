@@ -4,7 +4,6 @@ export const click = async () => {
   alert("TEST DE CLICK");
   if (document.cookie.length > 0) {
     alert("TENEMOS UNA COOKIE!");
-    console.log(document.cookie.split(";"));
   } else {
     alert("NO TENEMOS UNA COOKIE!");
   }
@@ -19,7 +18,6 @@ export const controlDeCookies = async () => {
   } else if (document.cookie.length > 0) {
     const nombre = document.cookie.split("=")[1];
     alert("hay solo una cookie!,ese es tu nombre! " + nombre);
-    console.log("DATOS DE LA COOKIE", nombre);
     return true;
   } else {
     alert("No hay cookies!, podes crear tu nombre!");
@@ -35,16 +33,10 @@ export const borrarCookie = () => {
       numeroDeCookies[i] + "=;expires=" + new Date(0).toUTCString();
   }
 };
-export default function Cookie(estado) {
-  const detectorDeCookies = estado.detectorDeCookies;
-
+export default function Cookie() {
   return (
     <div>
-      <button onClick={() => detectorDeCookies()}>
-        detector de cookies del servidor
-      </button>
       <br></br>
-      <button onClick={() => click()}>detector de cookies del cliente</button>
     </div>
   );
 }
